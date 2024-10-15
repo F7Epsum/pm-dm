@@ -16,6 +16,24 @@
 
         />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/splashGLV1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15"
+
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/splashGLV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85"
+
+        />
+
     <ImageView
         android:id="@+id/loginLogo"
         android:layout_width="200dp"
@@ -43,8 +61,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/loginAppName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/splashGLV1"
+        app:layout_constraintEnd_toEndOf="@+id/splashGLV2"
         app:startIconDrawable="@drawable/baseline_3p_24"
     >
         <EditText
@@ -55,6 +73,46 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginPassTIL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/loginUserNameTIL"
+        app:layout_constraintStart_toStartOf="@id/splashGLV1"
+        app:layout_constraintEnd_toEndOf="@id/splashGLV2"
+        app:startIconDrawable="@drawable/baseline_password_24"
+        app:passwordToggleEnabled="true"
+    >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/iconIniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassTIL"
+        app:layout_constraintStart_toStartOf="@id/splashGLV1"
+        app:layout_constraintEnd_toEndOf="@id/splashGLV2"
+        android:layout_margin="20dp"
+        android:text="Iniciar"
+        app:icon="@drawable/baseline_login_24"
+        />
+    <TextView
+        android:id="@+id/loginRegisterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Todavía no estas registrado?"
+        app:layout_constraintTop_toBottomOf="@+id/iconIniciar"
+        app:layout_constraintStart_toStartOf="@id/splashGLV1"
+        app:layout_constraintEnd_toEndOf="@id/splashGLV2"
+        />
 
 
 

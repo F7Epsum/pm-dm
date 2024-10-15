@@ -31,6 +31,8 @@ public class SplashScreen extends AppCompatActivity {
             return insets;
         });
 
+        launchMain();
+
         Animation gradientColor = AnimationUtils.loadAnimation(this, R.anim.gradient_colour);
         ImageView splashLogo = findViewById(R.id.logoSplash);
         splashLogo.startAnimation(gradientColor);
