@@ -1,8 +1,10 @@
 package com.F7Epsum.first;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
@@ -40,7 +44,12 @@ public class Register extends AppCompatActivity {
                 String userPassword = String.valueOf(registerPasswordTIL.getEditText().getText());
                 String userPasswordCheck = String.valueOf(registerPasswordConfirmTIL.getEditText().getText());
 
+
+
                 if (!userPassword.equals(userPasswordCheck)) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Tu contraseña no coincide", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else if (validarEmail()) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Tu contraseña no coincide", Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
@@ -49,7 +58,20 @@ public class Register extends AppCompatActivity {
                     editor.putString("userName", userName);
                     editor.putString("userPassword", userPassword);
                     editor.apply();
+                    launchMain();
+
                 }
+
+            }
+            public void launchMain(){
+                Intent intent = new Intent(Register.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+            private boolean validarEmail(String email) {
+                Pattern pattern = Patterns.EMAIL_ADDRESS;
+                return pattern.matcher(email).matches();
             }
         });
 
